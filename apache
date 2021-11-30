@@ -1,0 +1,27 @@
+1) les scripts d'arret et de redemarrage sont:
+  - systemctl
+  - /etc/init.d/nom_du_service (start|restart|stop)
+2)  les fichiers/repertoires  de configuration sont:
+  - /etc/httpd/conf/httpd.conf
+  - /etc/httpd/sites-availables/domain_name.conf
+  - /var/www/domain_name/index.html
+  2.1)Il est possible de parametre dans:
+  - /etc/httpd/conf/httpd.conf la configuration principale, le https ,etc...;
+  - /etc/httpd/sites-availables les virtualhosts,le tuning, le reverse proxy;
+  - /var/www/domain_name/ les pages webs.
+  2.2)les parametres important pour realiser le tuning sont:
+  - KeepAliveTimeout (MaxKeepAlive Timeout)
+  - SpareServers (MaxSpareServers, MinSpareServers)
+  - Options
+  - StartServer
+  2.2.1) 
+  - KeepAliveTimeout il s'agit du temps pendant lequel le serveur attend une requête avant la fermeture de la connexion
+  - SpareServers il s'agit du nombre minimum et maximum de processus enfants inactifs
+  - Option il s'agit de definir les fonctionnalites disponibles pour un repertoire particulier
+  - StartServer il s'agit du nombre de processus enfants creer au démarrage
+  2.2.2) ils boostent les performances et le fonctionnement de l'application
+  3) les logs de l'application se trouve par defaut dans: /var/log/httpd
+  4) les donnees se trouve dans : /var/www/ 
+  4.1)il contient les differents pages web 
+  4.2)il sont stockessous forme de fichier html
+  
