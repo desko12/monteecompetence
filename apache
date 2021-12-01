@@ -21,7 +21,44 @@
   - StartServer il s'agit du nombre de processus enfants creer au démarrage
   2.2.2) ils boostent les performances et le fonctionnement de l'application
   3) les logs de l'application se trouve par defaut dans: /var/log/httpd
-  4) les donnees se trouve dans : /var/www/ 
+  4) les donnees se trouve dans : /var/www/
   4.1)il contient les differents pages web 
-  4.2)il sont stockessous forme de fichier html
+  4.2)il sont stockes la forme de de fichier html
+  4.3) il y'a des donnees de cache, il se trouve dans  /var/cache/httpd, si on les purgent  nous  aurons des probleme lie a la  performance.
+  5) il ecoute sur le port 8080
+  6) oui il y'a des sessions utilisateurs
+  6.1)oui, Selon la configuration, les sessions sont suivies à partir d'un identifiant de session stocké dans un cookie, ou extraites de la chaîne de paramètres de l'URL, comme dans les requêtes GET courantes.
+  6.2)elle est possible via un mecanisme de session stocker
   
+  PARTIE 2 : haute disponibilite
+  1)le type actif/passif
+  2)oui 
+  3)il faut le mettre en place via un pool de serveur
+  4.1) l'application est toujours disponibles.
+  4.2)oui
+  
+  PARTIE3: Scalabilité
+  
+1) non
+2) non
+3) oui
+
+  PARTIE4: Replication/partage des donnees
+1) ce sont :
+/etc/httpd/sites-availables
+/etc/httpd/sites-enables
+/var/www/domain_name
+2)elle doit se faire en temps réel
+
+PARTIE5:Supervision
+1) Apache
+2) on le supervise par http
+
+PARTIE6: Sauvegarde
+1) nous sauvegardons les fichiers importants, on exclure les moins importants.
+2) nous les sauvegardons en mode fichier
+
+PARTIE7: les logs
+1) ils se trouvent dans /var/log
+2) elle est gerée par les tâches cron
+3) par defaut non
