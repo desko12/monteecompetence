@@ -1,0 +1,4 @@
+PARTIE1 : compréhension du fonctionnement de l'application
+1) les scripts d'arrêt et de redemarrage sont :
+  - systemctl
+  - /etc/init.d/nom_du_service (démarrer|redémarrer|arrêter)
