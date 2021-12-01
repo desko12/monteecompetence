@@ -1,5 +1,6 @@
-1) les scripts d'arret et de redemarrage sont:
-  - systemctl
+1) les scripts d'arret et de redemarrage sont: 
+  - systemctl (start|restart|stop| status)
+  - service service_name (start|stop|restart|status)
 2)  les fichiers/repertoires  de configuration sont:
   - /etc/httpd/conf/httpd.conf
   - /etc/httpd/sites-availables/domain_name.conf
