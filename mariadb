@@ -1,0 +1,11 @@
+PARTIE1: Fonctionnement
+1) les scripts d'arrêt et de redemarrage sont : 
+  - systemctl (démarrer|redémarrer|arrêter|état)
+  - service nom_service (start|stop|restart|status)
+2) les fichiers/répertoires de configuration sont :
+- /etc/my.cnf
+- /etc/my.cnf.d/
+2.1) il est possible de configurer
+- galera cluster
+- acces distant a mariadb
+
