@@ -34,4 +34,28 @@ Les utilisateur
 6) oui il y'a des sesions utilisateurs.
 
   PARTIE2: haute disponiblite
+1)  actif/passif
+2) non
+3) oui 
+4.) l'application es toujours disponible
+
+PARTIE3: Scalabilite
+1) via un partage nfs monte sur chacun des noeuds
+2) elles doit se faire en temps reels
+
+PARTIE 4: surveillance
+1)le websocket
+2)on peut le supervise par http
+
+PARTIE 5:Sauvegarde
+1) l'on peut sauvegarder les repertoires suivants:
+- /var/lib/tomcat
+- /var/log/tomcat
+2)on peut sauvegarde en mode fichier
+
+PARTIE6: logs
+1)il se trouve dans /var/log/tomcat
+2)tous les jours sans avoir à eteindre et a redemarrer son serveur
+3) par defaut non
+
   
