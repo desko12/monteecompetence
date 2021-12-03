@@ -1,11 +1,85 @@
 PARTIE1: Fonctionnement
-1) les scripts d'arrêt et de redemarrage sont : 
+1) quels sont les scripts permettant de gerer l'arrêt/redemarrage de l'application
+ce sont:
   - systemctl (démarrer|redémarrer|arrêter|état)
   - service nom_service (start|stop|restart|status)
-2) les fichiers/répertoires de configuration sont :
+2) ou se trouve les fichiers/repertoires de configuration?
+ce sont:
 - /etc/my.cnf
 - /etc/my.cnf.d/
-2.1) il est possible de configurer
-- galera cluster
+2.1) Qu'est-ce qu'il est possible de configurer
+l'on peut configure les element suivants:
+- un cluster galera
 - acces distant a mariadb
+2.2) quels sont les parametres important pour realiser le tuning de mariadb, à quoi servent-ils,quels impacts ont-ils sur l'application
+- threads permettent d'améliorer les performances des applications grâce au parallélisme.
+- thread_pool_size  il permet de gerer le nombre de connexion simultanée
+- wait_timeout elle met fin à une connexion après une periode d'inactivité
+- max_heap_table_size et tmp_table_size elles permettent de stocker temporairement des données à des étapes intermédiaires dans des requêtes complexes
+3)ou se trouve les logs de mariadb
+ils se trouvent dans  /var/log/mariadb par defaut 
+4) ou se trouvent les donnéés de mariadb, quoi servent-elles, sous quelles formes sont-elles stocker?
+elles sont dans /var/lib/mysql/mysql elle contient toutes les bases de données ainsi que toutes les donneés, variables relatives a mariadb  elles sont stockes  dans les
+formats suivants: .frm, .MAD,.MAI,.CSM,.CSV,.idb
+4.1)  Y a-t-il des données de cache ? Ou se trouve-t-elle ? Quel impact peut- on avoir sur les purges ?
+oui mais il faut l'activer avec ceci SET  GLOBAL  have_queri_cache = on et defini la taille SET  GLOBAL  query_cache_size = taille
+5) Existe-t-il des outils d'administration permettant de gerer l'application? Comment fonctionnent-ils ? Qu'est-ce qu'ils nous permettent de faire et de gérer ?
+oui , phpMyAdmin est un outil qui nous permet de visualiser rapidement l'état de notre base de données et de la modifier, sans avoir à écrire de requêtes SQL. On crée généralement un champ nommé id qui sert à numéroter les entrées d'une table
+et c...
+6) Sur quels ports écoutent mariadb?
+sur le port 3306.
+7)Y a-t-il des sessions utilisateur?  Est-ce qu'elles doivent être partagées et Comment fonctionnent-ils entre plusieurs nœuds?De quelle manière ? Via des mécanismes internes de
+         		l'application, via un stockage partagé, des sessions communes stockées en base ?
+  oui, oui ,via un mecanisme internes.
+  
+  PARTIE2:Haute disponibilité (Tolérance aux pannes)
+  1)Quel type de cluster est supporté par la techno ? Actif/Actif ? Actif/Passif ?
+elle supporte le cluster actif/actif
+2) L'application dispose-t-elle d'un mode cluster ou tous les
+     	noeuds doivent communiquer ensemble ?
+      oui
+3) Ou faut-il mettre en place des mécanismes de HA au niveau système via un pool de serveur dans un cluster avec un LB au-dessus ?
+par necessairement.
 
+4)Quelles sont les conséquences sur le fonctionnement de
+     	l'application en cas de perte d'une noeud :L'application est-elle toujours disponible ?Y a-t-il des pertes de connexions ?
+  l'application est toujour disponible. non.
+  
+ PARTIE3:Scalabilité : Comment fait-on pour assurer la montée en charge ?
+ 
+ 1) Est-ce qu'il est possible de répartir sur plusieurs serveurs
+     	les différents composants de l'application ?
+   NO 
+  2)L'ajout de nœuds dans un pool est-il suffisant ?
+non
+3)  Augmentation des ressources CPU, mémoire, disque ?
+oui
+4) Mécanismes natif à l'application ?non
+5) Quel risque d'être le point de contention de l'application ?
+
+PARTIE4: Réplication/partage des données
+1)Quels sont les données à répliquer/partager entre les nœuds ? Via un cluster DRBD (cluster actif/passif à deux nœuds) 
+2)Est-ce que la réplication doit se faire en temps réel ou en
+     	est-ce possible de le faire en différé ?
+ elle doit se faire en temps reel.
+ 
+ PARTIE5:Supervision
+ 
+ 1)Qu'elles sont les services critiques qu'on doit superviser? mysql
+2)  Comment on le supervise (par SNMP/HTTP/JMX/SSH/etc.) ?  par snmp
+ 
+ PARTIE6: Sauvegarde
+ 1) Qu'est-ce qu'on sauvegarde ? Qu'est-ce qu'on exclue de la
+     	sauvegarde ?
+  on sauvegarde les repertoire de configuration et celui qui contient les donnees du service, les autres sont à exclure.
+2) Comment on le sauvegarde (sauvegarde en mode fichier, via des
+     	scripts de dumps) ? 
+      la sauvegarde en mode fichier
+      
+PARTIE 7: logs
+1)Ou se trouvent les logs importants?  ils se trouve dans /var/lib/mysql
+2)  Comment est gérée la rotation des logs ? toujours.
+3) Sont-ils envoyés vers un serveur de logs ? par defaut non.
+
+ 
+  
