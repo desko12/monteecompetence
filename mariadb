@@ -74,7 +74,7 @@ PARTIE4: Réplication/partage des données
   on sauvegarde les repertoire de configuration et celui qui contient les donnees du service, les autres sont à exclure.
 2) Comment on le sauvegarde (sauvegarde en mode fichier, via des
      	scripts de dumps) ? 
-      la sauvegarde en mode fichier
+      la sauvegarde  se fait via des scripts de dumps.
       
 PARTIE 7: logs
 1)Ou se trouvent les logs importants?  ils se trouve dans /var/lib/mysql
