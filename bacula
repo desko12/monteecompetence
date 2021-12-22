@@ -1,0 +1,21 @@
+PARTIE 1: COMPREHENSION DU FONCTIONNEMENT DE L'APPLICATION
+
+1) Quels sont les scripts permettant de gérer l'arrêt/redémarragent de l'application?
+ce sont:
+  - systemctl (démarrer|redémarrer|arrêter|état)
+  - service nom_service (start|stop|restart|status) 
+2)Ou se trouve les fichiers/répertoires de configuration ?
+ 2-1) Qu'est-ce qu'il est possible de paramétrer dans
+ il est possible de configurer les elements suivants:
+ - le storage 
+- le director
+-  les peripherique de stockage (device)
+-  message
+- file daemon
+-  le travail (job, jobdef)
+- fileset (l'ensembles des fichiers à inclure ou exclure)
+- le schedule (planificateur des taches de sauvegarde)
+- le client
+- le pool (pour la gestion des volumes)
+- le catalogue (la base de donnee)
+2-2)Qu'elles sont les paramètres importants pour réaliser le 	Tuning de l'application ?
